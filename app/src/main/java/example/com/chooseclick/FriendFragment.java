@@ -7,21 +7,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
-public class MessageFragment extends Fragment {
-
-    public MessageFragment(){
-
-    }
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
+/**
+ * Created by ozcan on 08.03.2015.
+ */
+public class FriendFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View layout = inflater.inflate(R.layout.message_fragment_layout,container,false);
+        View layout = inflater.inflate(R.layout.friend_fragment_layout,container,false);
         return layout;
     }
 }

@@ -1,4 +1,4 @@
-package example.com.chooseclick.homeCard;
+package example.com.chooseclick;
 
 /**
  * Created by ozcan on 01.03.2015.

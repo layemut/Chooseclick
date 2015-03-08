@@ -1,4 +1,4 @@
-package example.com.chooseclick.drawer;
+package example.com.chooseclick;
 
 
 import android.annotation.TargetApi;
@@ -75,11 +75,9 @@ public class drawerFragment extends Fragment{
     public List<drawerInformation> dummyDataforDrawer(){
         List<drawerInformation> dummyData = new ArrayList<>();
 
-        int[] dummyImages = {R.drawable.dmc,R.drawable.dota1,R.drawable.dota2,
-                R.drawable.dota2,R.drawable.dota1,R.drawable.dota1,R.drawable.dota2,
-                R.drawable.dota2,R.drawable.dota2,R.drawable.dota2,R.drawable.dota2};
-        String[] dummyNames = {"Özcan Candağ","Erdem Ürüt","Tutku Sıla Vural","Özge Aksoy",
-                "Merve Kaya","Gizem Ergin","Hüseyin Can Dayan","deneme","deneme","deneme","deneme"};
+        int[] dummyImages = {R.drawable.everything,R.drawable.popular,R.drawable.drawer_new,
+        R.drawable.friends,R.drawable.messages};
+        String[] dummyNames = {"Her şey","Popüler","Yeni","Arkadaşlar","Mesajlar"};
 
         for(int i =0;i<dummyImages.length;i++){
             drawerInformation current = new drawerInformation();

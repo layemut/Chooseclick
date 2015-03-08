@@ -3,31 +3,30 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <FrameLayout
+<FrameLayout
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    >
+<android.support.v4.view.ViewPager
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pager">
+</android.support.v4.view.ViewPager>
+    <include
+        android:id="@+id/appBar"
+        layout="@layout/app_bar"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <RelativeLayout
-        android:id="@+id/content_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="6dp">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/homeCards"
-            android:scrollbars="vertical"
-            android:paddingTop="?android:attr/actionBarSize"
-            android:divider="#f5f5f5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-        <include
-            android:id="@+id/appBar"
-            layout="@layout/app_bar"></include>
-
-    </RelativeLayout>
-    </FrameLayout>
+        android:layout_gravity="top"
+        android:layout_margin="6dp"
+        ></include>
+</FrameLayout>
     <fragment
-        android:layout_width="match_parent"
+        android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:name="example.com.chooseclick.drawer.drawerFragment">
-        </fragment>
+        android:name="example.com.chooseclick.drawerFragment">
+    </fragment>
 </android.support.v4.widget.DrawerLayout>

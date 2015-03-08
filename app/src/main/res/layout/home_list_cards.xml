@@ -27,11 +27,19 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="35dp"
             android:layout_gravity="top"
             android:alpha=".45"
             android:background="#000"
             android:scaleType="fitXY" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginLeft="2dp"
+            android:id="@+id/homeCardProfile"
+            android:src="@drawable/popular"/>
 
         <TextView
             android:id="@+id/nameTextView"

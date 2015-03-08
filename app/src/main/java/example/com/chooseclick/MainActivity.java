@@ -1,41 +1,33 @@
 package example.com.chooseclick;
 
 import android.app.ActionBar;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Toast;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import example.com.chooseclick.homeCard.homeCard;
-import example.com.chooseclick.homeCard.homeCardAdapter;
-
 
 public class MainActivity extends ActionBarActivity {
 
     private Toolbar toolbar;
-    private MessageFragment messageFragment;
-    private ActionBar actionbar;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle abdt;
-    private FloatingActionButton fab;
-    private RecyclerView homeCards;
-    private RecyclerView.LayoutManager homeCardsLayoutManager;
-    private homeCardAdapter myHomeCardsAdapter;
+    private ViewPager viewPager=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,52 +35,22 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         setUpToolBarAndDrawer();
+        viewPager=(ViewPager)findViewById(R.id.pager);
 
-        homeCards = (RecyclerView)findViewById(R.id.homeCards);
-        homeCards.setHasFixedSize(true);
-
-        homeCardsLayoutManager = new LinearLayoutManager(this);
-        homeCards.setLayoutManager(homeCardsLayoutManager);
-
-        myHomeCardsAdapter = new homeCardAdapter(this,dummyData());
-        homeCards.setAdapter(myHomeCardsAdapter);
-
-        homeCards.setItemAnimator(new DefaultItemAnimator());
-
-
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        viewPager.setAdapter(new pagerAdapter(fragmentManager));
 
     }
 
-    public List<homeCard> dummyData(){
-        List<homeCard> dummyData = new ArrayList<>();
 
-        int[] dummyImages = {R.drawable.dmc,R.drawable.dota1,R.drawable.dota2,
-                R.drawable.dota2,R.drawable.dota1,R.drawable.dota1,R.drawable.dota2};
-
-        String[] dummyNames = {"Özcan Candağ","Erdem Ürüt","Tutku Sıla Vural","Özge Aksoy",
-        "Merve Kaya","Gizem Ergin","Hüseyin Can Dayan"};
-
-        String[] dummyComments = {"kaowkodgaskogsa","aopdkgwokgaw","pkoagopksdgokas","akopsdogass",
-        "akopdkgopwkogaw","akgosokdgasga","akopsdpkogaskodga","aodskgkoasga","akosdgkoasgaskodg"};
-
-        for(int i =0;i<dummyImages.length;i++){
-            homeCard current = new homeCard();
-            current.imagesID = dummyImages[i];
-            current.userNames = dummyNames[i];
-            current.comments=dummyComments;
-            dummyData.add(current);
-        }
-
-        return dummyData;
-    }
     public void setUpToolBarAndDrawer() {
         toolbar = (Toolbar) findViewById(R.id.appBar);
+        toolbar.setTitle("ChooseClick");
         setSupportActionBar(toolbar);
 
         drawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
-        actionbar=getActionBar();
 
         abdt = new ActionBarDrawerToggle(this,drawerLayout,toolbar,R.string.open,R.string.close){
 
@@ -104,8 +66,6 @@ public class MainActivity extends ActionBarActivity {
                 super.onDrawerClosed(drawerView);
                 // Code here will execute once drawer is closed
             }
-
-
 
         };
 
@@ -130,13 +90,35 @@ public class MainActivity extends ActionBarActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            FragmentTransaction transaction = getFragmentManager().beginTransaction();
-            transaction.replace(R.id.content_frame,new MessageFragment(),"deneme");
-            transaction.commit();
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+}
+
+class pagerAdapter extends FragmentPagerAdapter{
+
+    public pagerAdapter(FragmentManager fm){
+        super(fm);
+    }
+
+    @Override
+    public Fragment getItem(int position) {
+        Fragment fragmentToDisplay = null;
+        if(position==0){
+            fragmentToDisplay=new homeCardFragment();
+        }if(position==1){
+            fragmentToDisplay=new FriendFragment();
+        }if(position==2){
+            fragmentToDisplay=new MessageFragment();
+        }
+        return fragmentToDisplay;
+    }
+
+    @Override
+    public int getCount() {
+        return 3;
     }
 }
 

@@ -1,4 +1,4 @@
-package example.com.chooseclick.drawer;
+package example.com.chooseclick;
 
 
 public class drawerInformation {

@@ -1,12 +1,8 @@
-package example.com.chooseclick.homeCard;
+package example.com.chooseclick;
 
 
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -19,13 +15,10 @@ import android.widget.TextView;
 
 import com.getbase.floatingactionbutton.FloatingActionButton;
 
-import java.io.InputStream;
-import java.net.URL;
 import java.util.Collections;
 import java.util.List;
 
-import example.com.chooseclick.MessageFragment;
-import example.com.chooseclick.R;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class homeCardAdapter extends RecyclerView.Adapter<homeCardAdapter.MyViewHolder> {
 
@@ -61,6 +54,7 @@ public class homeCardAdapter extends RecyclerView.Adapter<homeCardAdapter.MyView
         viewHolder.comments.setAdapter(comments);
         viewHolder.sharedImage.setImageResource(current.imagesID);
         viewHolder.userName.setText(current.userNames);
+        viewHolder.profileImage.setImageResource(current.imagesID);
         viewHolder.commentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -107,6 +101,7 @@ public class homeCardAdapter extends RecyclerView.Adapter<homeCardAdapter.MyView
         ImageView sharedImage,postLikedImage;
         ListView comments;
         FloatingActionButton commentButton,likeButton,shareButton;
+        CircleImageView profileImage;
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -117,6 +112,7 @@ public class homeCardAdapter extends RecyclerView.Adapter<homeCardAdapter.MyView
             likeButton=(FloatingActionButton)itemView.findViewById(R.id.likefab);
             postLikedImage=(ImageView)itemView.findViewById(R.id.postLikedImageView);
             shareButton=(FloatingActionButton)itemView.findViewById(R.id.sharefab);
+            profileImage=(CircleImageView)itemView.findViewById(R.id.homeCardProfile);
         }
     }
 }
