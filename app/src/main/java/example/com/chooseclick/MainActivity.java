@@ -40,8 +40,12 @@ public class MainActivity extends ActionBarActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
         viewPager.setAdapter(new pagerAdapter(fragmentManager));
 
+
     }
 
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 
     public void setUpToolBarAndDrawer() {
         toolbar = (Toolbar) findViewById(R.id.appBar);

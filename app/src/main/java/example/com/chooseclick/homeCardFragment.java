@@ -28,7 +28,8 @@ public class homeCardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View layout = inflater.inflate(R.layout.homecard_fragment_layout,container,false);
-
+        ((MainActivity) getActivity())
+                .setActionBarTitle("ChooseClick");
         homeCards = (RecyclerView)layout.findViewById(R.id.homeCards);
         homeCards.setHasFixedSize(true);
 
@@ -41,6 +42,7 @@ public class homeCardFragment extends Fragment {
         homeCards.setItemAnimator(new DefaultItemAnimator());
         return layout;
     }
+
     public List<homeCard> dummyData(){
         List<homeCard> dummyData = new ArrayList<>();
 
